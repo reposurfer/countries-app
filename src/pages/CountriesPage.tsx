@@ -7,12 +7,13 @@ import { RootState } from "../redux/store";
 import { getAllCountries } from "../services/countries.service";
 
 function CountriesPage() {
-    const countries = useSelector((state: RootState) => state.countries.value);
+    const countries = useSelector((state: RootState) => state.countries.filteredCountries);
     const dispatch = useDispatch();
 
     useEffect(() => {
         getAllCountries().then((countries) => {
             dispatch({ type: 'countries/setCountries', payload: countries });
+            dispatch({ type: 'countries/setFilteredCountries', payload: countries });
         });
     }, []);
     return (

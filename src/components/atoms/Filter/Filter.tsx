@@ -5,10 +5,10 @@ import './Filter.css';
 
 function Filter() {
     const dispatch = useDispatch();
-    const countries = useSelector((state: RootState) => state.countries.value);
+    const countries = useSelector((state: RootState) => state.countries.countries);
 
     const handleOnChange = (e: any) => {
-        const input = e.target.value;
+        const input: string = e.target.value;
         if(input === '') {
             getAllCountries().then((countries) => {
                 dispatch({ type: 'countries/setCountries', payload: countries });
@@ -16,10 +16,10 @@ function Filter() {
             });
         }
         const filteredCountries = countries.filter((country) => {
-            return country.name.official.toLowerCase().includes(e.target.value.toLowerCase());
+            return country.name.official.toLowerCase().includes(input.toLowerCase());
         });
 
-        dispatch({ type: 'countries/setCountries', payload: filteredCountries });
+        dispatch({ type: 'countries/setFilteredCountries', payload: filteredCountries });
     }
 
     return (

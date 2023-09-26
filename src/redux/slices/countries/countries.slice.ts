@@ -3,11 +3,13 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { Country } from '../../../types/country.type';
 
 export interface CountriesSlice {
-  value: Country[];
+  filteredCountries: Country[];
+  countries: Country[];
 }
 
 const initialState: CountriesSlice = {
-  value: [],
+  filteredCountries: [],
+  countries: [],
 }
 
 export const countriesSlice = createSlice({
@@ -15,12 +17,15 @@ export const countriesSlice = createSlice({
   initialState,
   reducers: {
     setCountries: (state, action: PayloadAction<Country[]>) => {
-      state.value = action.payload
+      state.countries = action.payload
     },
+    setFilteredCountries: (state, action: PayloadAction<Country[]>) => {
+      state.filteredCountries = action.payload
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setCountries } = countriesSlice.actions
+export const { setFilteredCountries, setCountries } = countriesSlice.actions
 
 export default countriesSlice.reducer
