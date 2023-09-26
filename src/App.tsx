@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import { getAllCountries } from "./services/countries.service";
+import CountriesPage from "./pages/CountriesPage";
 
 function App() {
   return (
-    <>
-    </>
+    <CountriesPage />
   );
 }
 
