@@ -1,8 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-
-interface Country {
-
-}
+import { Country } from '../types/country.type';
 
 axios.defaults.baseURL = 'https://restcountries.com/v3.1';
 
@@ -35,12 +32,19 @@ const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const request = {
   get: <T>(url: string) => axios.get<T>(url).then(responseBody),
-  post: <T>(url: string, body: {}) =>
-    axios.post<T>(url, body).then(responseBody),
 };
 
 const countries = {
+  /**
+   * @returns List of all countries
+   */
   list: () => request.get<Country[]>('/all'),
+
+  /**
+   * Returns details of a country specified by name
+   * @param name 
+   * @returns Details of a country
+   */
   details: (name: string) => request.get<Country>(`/name/${name}`),
 };
 

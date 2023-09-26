@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import { useEffect } from "react";
+import { getAllCountries } from "./services/countries.service";
 
 function App() {
   return (
