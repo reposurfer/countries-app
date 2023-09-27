@@ -2,7 +2,7 @@ import './MainTitle.css';
 
 function MainTitle() {
     return (
-        <h1 className="title">Countries</h1>
+        <h1 className="title">Global Explorer: Country Encyclopedia</h1>
     )
 }
 
