@@ -2,7 +2,7 @@
 
 Global Explorer is an informative application about all the recognised countries of our world.
 
-You can test the application yourself on [globalexplorer.com](https://global-explorer-w7rz.onrender.com)
+You can test the application yourself on [global-explorer.com](https://global-explorer-w7rz.onrender.com).
 
 ## Getting started
 
