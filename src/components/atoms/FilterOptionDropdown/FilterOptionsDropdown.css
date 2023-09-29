@@ -10,8 +10,67 @@
     top: 100%; /* Adjust this value to position the dropdown below the button */
   }
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .item {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .item > label {
+    display: flex;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: white;
+    /* Not removed via appearance */
+    margin: 0;
+  
+    font: inherit;
+    color: black;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+  
+    display: grid;
+    place-content: center;
+
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    background-color: black;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
 /* Show the dropdown content when the button is hovered or focused */
-.dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+.dropdown:hover .dropdown-content {
     display: block;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

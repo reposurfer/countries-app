@@ -22,20 +22,20 @@ function FilterOptionsDropdown() {
     }, []);
     return (
         <div className="dropdown-content">
-            <ul>
-                <li>
+            <div className='container'>
+                <div className='item'>
                     <input onChange={handleNameCheckChange} type="checkbox" id="name" name="name" defaultChecked />
                     <label htmlFor="name">Name</label>
-                </li>
-                <li>
+                </div>
+                <div className='item'>
                     <input onChange={handleRegionCheckChange} type="checkbox" id="region" name="region" defaultChecked />
                     <label htmlFor="region">Region</label>
-                </li>
-                <li>
+                </div>
+                <div className='item'>
                     <input onChange={handleCapitalCheckChange} type="checkbox" id="capital" name="capital" defaultChecked />
                     <label htmlFor="capital">Capital</label>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     )
 }
