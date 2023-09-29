@@ -1,0 +1,4 @@
+.dropdown {
+    display: flex;
+    position: relative; /* Necessary for absolute positioning of content */
+}

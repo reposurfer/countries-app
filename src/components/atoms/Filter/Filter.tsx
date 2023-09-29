@@ -7,6 +7,7 @@ import { filterCountryByCapital, filterCountryByName, filterCountryByRegion } fr
 function Filter() {
     const dispatch = useDispatch();
     const countries = useSelector((state: RootState) => state.countries.countries);
+    const options = useSelector((state: RootState) => state.filter.options);
 
     const handleOnChange = (e: any) => {
         const input: string = e.target.value;
@@ -17,7 +18,29 @@ function Filter() {
             });
         }
         const filteredCountries = countries.filter((country) => {
-            return filterCountryByName(country, input) || filterCountryByCapital(country, input) || filterCountryByRegion(country, input);
+            console.log(options);
+            if(options.name && options.capital && options.region) {
+                return filterCountryByName(country, input) || filterCountryByCapital(country, input) || filterCountryByRegion(country, input);
+            }
+            if(options.name && options.capital) {
+                return filterCountryByName(country, input) || filterCountryByCapital(country, input);
+            }
+            if(options.name && options.region) {
+                return filterCountryByName(country, input) || filterCountryByRegion(country, input);
+            }
+            if(options.capital && options.region) {
+                return filterCountryByCapital(country, input) || filterCountryByRegion(country, input);
+            }
+            if(options.name) {
+                return filterCountryByName(country, input);
+            }
+            if(options.capital) {
+                return filterCountryByCapital(country, input);
+            }
+            if(options.region) {
+                return filterCountryByRegion(country, input);
+            }
+            return false;
         });
 
         dispatch({ type: 'countries/setFilteredCountries', payload: filteredCountries });
@@ -25,7 +48,7 @@ function Filter() {
 
     return (
         <div className="filter">
-            <input onChange={handleOnChange} type="text" placeholder="Filter by your imagination" />
+            <input onChange={handleOnChange} type="text" placeholder="Filter by your options" />
         </div>
     );
 }

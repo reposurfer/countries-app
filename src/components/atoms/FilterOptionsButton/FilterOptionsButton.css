@@ -10,3 +10,8 @@
     padding: 10px;
     cursor: pointer;
 }
+
+/* Show the dropdown content when the button is hovered or focused */
+.dropdown:hover .button {
+    border-bottom-left-radius: 0px;
+  }
