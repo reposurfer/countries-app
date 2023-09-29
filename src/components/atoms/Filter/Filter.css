@@ -1,4 +1,27 @@
-.filter {
+input[type=text] {
+    width: 100%;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 1em;
+    background-color: white;
+    background-image: url('../../../assets/searchicon.svg');
+    background-position: center left 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+  }
+
+  .filter {
     display: flex;
     justify-content: center;
+    flex-basis: 30%;
+  }
+
+@media screen and (max-width: 1100px) {
+    .filter {
+        flex-basis: 60%;
+    }
 }

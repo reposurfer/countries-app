@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Filter from "../components/atoms/Filter/Filter";
 import MainTitle from "../components/atoms/MainTitle/MainTitle";
+import FilterGroup from "../components/organisms/FilterGroup/FilterGroup";
 import CountriesTemplate from "../components/templates/CountriesTemplate/CountriesTemplate";
 import { RootState } from "../redux/store";
 import { getAllCountries } from "../services/countries.service";
@@ -18,8 +18,8 @@ function CountriesPage() {
     }, []);
     return (
         <>
-        <MainTitle />
-        <Filter />
+        <MainTitle title="Global Explorer: Country Encyclopedia" />
+        <FilterGroup />
         <CountriesTemplate countries={countries} />
         </>
     )

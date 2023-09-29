@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { getAllCountries } from '../../../services/countries.service';
 import './Filter.css';
+import { filterCountryByCapital, filterCountryByName, filterCountryByRegion } from '../../../utils/filter.helpers';
 
 function Filter() {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function Filter() {
             });
         }
         const filteredCountries = countries.filter((country) => {
-            return country.name.official.toLowerCase().includes(input.toLowerCase());
+            return filterCountryByName(country, input) || filterCountryByCapital(country, input) || filterCountryByRegion(country, input);
         });
 
         dispatch({ type: 'countries/setFilteredCountries', payload: filteredCountries });
@@ -24,7 +25,7 @@ function Filter() {
 
     return (
         <div className="filter">
-            <input onChange={handleOnChange} type="text" placeholder="Filter by name" />
+            <input onChange={handleOnChange} type="text" placeholder="Filter by your imagination" />
         </div>
     );
 }

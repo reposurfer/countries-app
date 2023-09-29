@@ -3,8 +3,7 @@ function CurrencyGroup({ currencies }: {currencies: { [key: string] : {name: str
     for(const key in currencies) {
         names.push(currencies[key].name);
     }
-    console.log(names);
-    names.map((name) => { <p>{name}</p> });
+    names.map((name) => {return <p>{name}</p> });
     return (
         <>
             <p>Currencies: {names}</p>

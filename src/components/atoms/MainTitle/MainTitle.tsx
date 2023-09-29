@@ -1,8 +1,8 @@
 import './MainTitle.css';
 
-function MainTitle() {
+function MainTitle({title}: {title: string}) {
     return (
-        <h1 className="title">Global Explorer: Country Encyclopedia</h1>
+        <div className="title">{title}</div>
     )
 }
 

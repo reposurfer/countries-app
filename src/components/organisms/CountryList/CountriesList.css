@@ -7,8 +7,21 @@
     margin-top: 2em;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 300px) {
+    .list {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
     .list {
         grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .list {
+        grid-template-columns: 1fr 1fr;
     }
 }
