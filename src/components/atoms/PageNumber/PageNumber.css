@@ -1,0 +1,13 @@
+.page-number {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+}
+
+.selected-page {
+    background-color: #000;
+    color: #fff;
+}

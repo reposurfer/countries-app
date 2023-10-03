@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import countriesReducer from './slices/countries/countries.slice'
 import filterReducer from './slices/filter/filter.slice'
+import paginationReducer from './slices/pagination/pagination.slice'
 
 export const store = configureStore({
   reducer: {
     countries: countriesReducer,
     filter: filterReducer,
+    pagination: paginationReducer
   },
 })
 

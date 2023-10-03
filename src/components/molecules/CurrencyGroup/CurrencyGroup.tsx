@@ -4,6 +4,13 @@ function CurrencyGroup({ currencies }: {currencies: { [key: string] : {name: str
         names.push(currencies[key].name);
     }
     names.map((name) => {return <p>{name}</p> });
+
+    if(names.length === 1) return (
+        <>
+            <p>Currency: {names}</p>
+        </>
+    );
+
     return (
         <>
             <p>Currencies: {names}</p>

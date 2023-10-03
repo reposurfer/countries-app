@@ -1,11 +1,17 @@
 import { Country } from "../../../types/country.type";
+import MainTitle from "../../atoms/MainTitle/MainTitle";
+import Pagination from "../../molecules/Pagination/Pagination";
 import CountriesList from "../../organisms/CountryList/CountriesList";
+import FilterGroup from "../../organisms/FilterGroup/FilterGroup";
 
-function CountriesTemplate({ countries }: { countries: Country[]}) {
+function CountriesTemplate({ title }:{ title: string }) {
     return ( 
-        <div>
-            <CountriesList countries={countries} />
-        </div>
+        <>
+            <MainTitle title={title} />
+            <FilterGroup />
+            <CountriesList />
+            <Pagination />
+        </>
     );
 }
 

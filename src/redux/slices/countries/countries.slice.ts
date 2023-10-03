@@ -3,29 +3,34 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { Country } from '../../../types/country.type';
 
 export interface CountriesSlice {
-  filteredCountries: Country[];
-  countries: Country[];
+  displayCountries: Country[];
+  allCountries: Country[];
+  isLoading: boolean;
 }
 
 const initialState: CountriesSlice = {
-  filteredCountries: [],
-  countries: [],
+  displayCountries: [],
+  allCountries: [],
+  isLoading: false,
 }
 
 export const countriesSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    setCountries: (state, action: PayloadAction<Country[]>) => {
-      state.countries = action.payload
+    setAllCountries: (state, action: PayloadAction<Country[]>) => {
+      state.allCountries = action.payload
     },
-    setFilteredCountries: (state, action: PayloadAction<Country[]>) => {
-      state.filteredCountries = action.payload
+    setDisplayCountries: (state, action: PayloadAction<Country[]>) => {
+      state.displayCountries = action.payload
+    },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setFilteredCountries, setCountries } = countriesSlice.actions
+export const { setDisplayCountries, setAllCountries, setIsLoading } = countriesSlice.actions
 
 export default countriesSlice.reducer

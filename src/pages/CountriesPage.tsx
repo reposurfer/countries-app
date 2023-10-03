@@ -1,27 +1,31 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MainTitle from "../components/atoms/MainTitle/MainTitle";
-import FilterGroup from "../components/organisms/FilterGroup/FilterGroup";
 import CountriesTemplate from "../components/templates/CountriesTemplate/CountriesTemplate";
+import { setAllCountries, setDisplayCountries, setIsLoading } from "../redux/slices/countries/countries.slice";
 import { RootState } from "../redux/store";
 import { getAllCountries } from "../services/countries.service";
 
 function CountriesPage() {
-    const countries = useSelector((state: RootState) => state.countries.filteredCountries);
+    const countriesPerPage = useSelector((state: RootState) => state.pagination.countriesPerPage);
+    const selectedPage = useSelector((state: RootState) => state.pagination.selectedPage);
     const dispatch = useDispatch();
 
+    const title = "Global Explorer: Country Encyclopedia";
+
     useEffect(() => {
+        dispatch(setIsLoading(true));
         getAllCountries().then((countries) => {
-            dispatch({ type: 'countries/setCountries', payload: countries });
-            dispatch({ type: 'countries/setFilteredCountries', payload: countries });
+            dispatch(setAllCountries(countries));
+            const indexOfLastCountry = selectedPage * countriesPerPage;
+            const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+            const slicedCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
+            dispatch(setDisplayCountries(slicedCountries));
+            dispatch(setIsLoading(false));
         });
     }, []);
+
     return (
-        <>
-        <MainTitle title="Global Explorer: Country Encyclopedia" />
-        <FilterGroup />
-        <CountriesTemplate countries={countries} />
-        </>
+        <CountriesTemplate title={title} />
     )
 }
 
