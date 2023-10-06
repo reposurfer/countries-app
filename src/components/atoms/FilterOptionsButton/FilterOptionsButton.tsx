@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../../redux/store"
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 import './FilterOptionsButton.css'
 
 function FilterOptionsButton() {
@@ -11,7 +12,7 @@ function FilterOptionsButton() {
     }
 
     return (
-        <div className="button" onClick={handleClick}>Options</div>
+        <div className={"button " + (isOpen && "alter-border-radius")} onClick={handleClick}>{isOpen ? <BsChevronDown /> : <BsChevronUp />}</div>
     )
 }
 

@@ -12,6 +12,6 @@
 }
 
 /* Show the dropdown content when the button is hovered or focused */
-.dropdown:hover .button {
+.alter-border-radius {
     border-bottom-left-radius: 0px;
   }
