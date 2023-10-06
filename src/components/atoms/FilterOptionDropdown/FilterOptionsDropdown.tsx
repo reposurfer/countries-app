@@ -23,7 +23,7 @@ function FilterOptionsDropdown() {
         dispatch({ type: 'filter/setCapitalOption', payload: true });
     }, []);
     return (
-        <div className={"dropdown-content " + (isOpen == true && "show-content")}>
+        <div className={`dropdown-content ${isOpen == true && "show-content"}`}>
             <div className='container'>
                 <div className='item'>
                     <input onChange={handleNameCheckChange} type="checkbox" id="name" name="name" defaultChecked />

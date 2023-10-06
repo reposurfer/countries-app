@@ -12,7 +12,7 @@ function FilterOptionsButton() {
     }
 
     return (
-        <div className={"button " + (isOpen && "alter-border-radius")} onClick={handleClick}>{isOpen ? <BsChevronDown /> : <BsChevronUp />}</div>
+        <div className={`button ${isOpen && "alter-border-radius"}`} onClick={handleClick}>{isOpen ? <BsChevronDown /> : <BsChevronUp />}</div>
     )
 }
 

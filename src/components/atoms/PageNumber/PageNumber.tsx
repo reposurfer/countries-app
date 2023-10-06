@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setDisplayCountries, setIsLoading } from '../../../redux/slices/countries/countries.slice';
+import { setDisplayCountries } from '../../../redux/slices/countries/countries.slice';
 import { setSelectedPage } from '../../../redux/slices/pagination/pagination.slice';
 import { RootState } from '../../../redux/store';
 import { scrollToTopAnimated } from '../../../utils/pagination.helpers';
@@ -19,9 +19,17 @@ function PageNumber({ pageNumber }: { pageNumber: number }) {
         dispatch(setDisplayCountries(slicedCountries));
         scrollToTopAnimated(1000);
     }
+
+    const isLast = pageNumber === Math.ceil(countries.length / countriesPerPage);
+
+    console.log(pageNumber, Math.ceil(countries.length / countriesPerPage))
       
     return (
-        <div className={`page-number ${selectedPage === pageNumber ? "selected-page" : ""}`}onClick={handleClick}>
+        <div className={
+            `page-number ${selectedPage === pageNumber && "selected-page"} 
+            ${isLast && "last"} ${pageNumber === 1 && "first"}
+            ${pageNumber !== 1 && !isLast ? "middle" : ""}
+            `}onClick={handleClick}>
             {pageNumber}
         </div>
     )
