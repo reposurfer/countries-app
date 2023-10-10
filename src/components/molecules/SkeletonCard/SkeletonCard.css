@@ -1,0 +1,17 @@
+.skeleton {
+    border: 3px solid rgb(237, 237, 237);
+    border-radius: 20px;
+    padding-left: 10px;
+    background-color: rgb(237, 237, 237);
+    height: 30vh;
+    animation: skeleton 1s infinite alternate;
+}
+
+@keyframes skeleton {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

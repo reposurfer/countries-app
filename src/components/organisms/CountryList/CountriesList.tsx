@@ -3,11 +3,13 @@ import { Country } from "../../../types/country.type";
 import CountryCard from "../../molecules/CountryCard/CountryCard";
 import './CountriesList.css';
 import { RootState } from "../../../redux/store";
+import SkeletonCard from "../../molecules/SkeletonCard/SkeletonCard";
 
 function CountriesList() {
     const countries = useSelector((state: RootState) => state.countries.displayCountries);
     const isLoading = useSelector((state: RootState) => state.countries.isLoading);
-    
+    const countriesPerPage = useSelector((state: RootState) => state.pagination.countriesPerPage);
+
     const list = (
         <div className="list">
             {countries.map((country) => (
@@ -16,11 +18,21 @@ function CountriesList() {
         </div>
     );
 
-    if(isLoading) return (
-        <h2>Loading...</h2>
+    const skeletonList = (
+        <div className="list">
+            {[...Array(countriesPerPage)].map((_, index) => (
+                <SkeletonCard key={index} />
+            ))}
+        </div>
     );
 
-    if(countries.length === 0) return (
+    if (isLoading) return (
+        <>
+            {skeletonList}
+        </>
+    );
+
+    if (countries.length === 0) return (
         <div className="no-found">No countries found</div>
     );
 
